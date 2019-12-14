@@ -1,0 +1,85 @@
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 font-italic">გამარჯობათ!</h1>
+    <p class="lead my-3">Скачайте последнюю версию нашего приложения, чтобы иметь возможность использовать все возможности.</p>
+    <p class="lead mb-0"><a href="/download" class="text-white font-weight-bold">Скачать...</a></p>
+  </div>
+</div>
+
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h2 class="display-4 font-italic border-bottom">
+        6Jlog BePcuu*
+      </h2>
+      <%CRUD::Version.all.each do |item| %>
+          <div class="blog-post border-bottom row">
+          <h2 class="blog-post-title col-sm-12"><%=item.version%></h2>
+          <p class="col-10"><%=item[:version_change]%></p>
+          <%if session[:identity] then %><a href="/admin/versions/<%=item.id_version%>/delete" role="button" class="btn btn-link col">Удалить</a> <%end %>
+        </div><!-- /.blog-post -->
+      <%end %>
+
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-3 mb-3 bg-light rounded">
+        <h3 class="font-italic">Why, Mr. Anderson, why?</h3>
+        <p class="mb-0">Данный веб-ресурс предназначен для загрузки последних версий программного продукта и просмотра информации обо всех выпущенных версиях.</p>
+      </div>
+
+      <div class="p-3">
+        <h2 class="font-italic">>Ch1g</h2>
+        <ol class="list-unstyled">
+          <li><a href="https://github.com/Ch1g">GitHub</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<!-- FEEDBACKER -->
+
+<div class="container">
+  <div class="row">
+    <form role="form" method="POST" action="/feedback" class="col-md-9 go-right border-top">
+      <br/>
+      <h2>0cTABbTE 0T3blB :-)</h2>
+      <p>Мы очень рады, что Вы воспользовались нашим ресурсом! Мы также будем очень рады узнать Ваше мнение о нём!</p>
+      <div class="form-group">
+        <label for="name">Ваше имя</label>
+        <input id="name" name="name" type="text" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Ваш E-mail</label>
+        <input id="email" name="email" type="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Отзыв</label>
+        <textarea id="message" name="message" class="form-control" style="height: 150px" required></textarea>
+      </div>
+      <% if @access then%>
+        <div class="alert alert-success text-center" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Успех:</span>
+          <%= @access %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FEEDBACKER END -->
+
+<footer class="blog-footer">
+  <p class="text-center">
+    <a href="">Всплыть ^</a>
+  </p>
+</footer>
